@@ -24,7 +24,7 @@ if (!empty($currentAdmin['full_name'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH Admin — Tableau de bord</title>
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -42,7 +42,7 @@ if (!empty($currentAdmin['full_name'])) {
         <span class="status-badge">En ligne</span>
       </div>
       <div class="topbar-right">
-        <a href="/admin/messages.php" class="notif-btn">
+        <a href="messages.php" class="notif-btn">
           <i class="fas fa-bell"></i>
           <?php if ($unreadMessages > 0): ?>
             <span class="notif-dot"></span>
@@ -66,7 +66,7 @@ if (!empty($currentAdmin['full_name'])) {
           <div class="stat-info">
             <div class="stat-label">Réalisations</div>
             <div class="stat-value"><?= $totalProjects ?></div>
-            <div class="stat-sub"><a href="/admin/projects.php" style="color:var(--accent)">Voir tous →</a></div>
+            <div class="stat-sub"><a href="projects.php" style="color:var(--accent)">Voir tous →</a></div>
           </div>
         </div>
         <div class="stat-card">
@@ -74,7 +74,7 @@ if (!empty($currentAdmin['full_name'])) {
           <div class="stat-info">
             <div class="stat-label">Membres actifs</div>
             <div class="stat-value"><?= $totalMembers ?></div>
-            <div class="stat-sub"><a href="/admin/team.php" style="color:var(--accent)">Gérer →</a></div>
+            <div class="stat-sub"><a href="team.php" style="color:var(--accent)">Gérer →</a></div>
           </div>
         </div>
         <div class="stat-card">
@@ -90,7 +90,7 @@ if (!empty($currentAdmin['full_name'])) {
           <div class="stat-info">
             <div class="stat-label">Administrateurs</div>
             <div class="stat-value"><?= $totalAdmins ?></div>
-            <div class="stat-sub"><a href="/admin/admins.php" style="color:var(--accent)">Gérer →</a></div>
+            <div class="stat-sub"><a href="admins.php" style="color:var(--accent)">Gérer →</a></div>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@ if (!empty($currentAdmin['full_name'])) {
         <div class="admin-card">
           <div class="admin-card-header">
             <h2><i class="fas fa-laptop-code" style="color:var(--accent);margin-right:8px;"></i>Réalisations récentes</h2>
-            <a href="/admin/projects.php" class="card-link">Voir tout →</a>
+            <a href="projects.php" class="card-link">Voir tout →</a>
           </div>
           <div class="admin-card-body" style="padding:0;">
             <table class="data-table">
@@ -137,7 +137,7 @@ if (!empty($currentAdmin['full_name'])) {
         <div class="admin-card">
           <div class="admin-card-header">
             <h2><i class="fas fa-envelope" style="color:var(--accent);margin-right:8px;"></i>Derniers messages</h2>
-            <a href="/admin/messages.php" class="card-link">Voir tout →</a>
+            <a href="messages.php" class="card-link">Voir tout →</a>
           </div>
           <div class="admin-card-body" style="padding:0;">
             <table class="data-table">
@@ -176,11 +176,11 @@ if (!empty($currentAdmin['full_name'])) {
           <h2><i class="fas fa-bolt" style="color:var(--gold);margin-right:8px;"></i>Actions rapides</h2>
         </div>
         <div class="admin-card-body" style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="/admin/projects.php?action=add" class="btn-primary"><i class="fas fa-plus"></i> Nouveau projet</a>
-          <a href="/admin/team.php?action=add" class="btn-primary" style="background:var(--gold);"><i class="fas fa-user-plus"></i> Nouveau membre</a>
-          <a href="/admin/messages.php" class="btn-secondary"><i class="fas fa-envelope"></i> Voir les messages <?php if ($unreadMessages > 0): ?>(<?= $unreadMessages ?>)<?php endif; ?></a>
-          <a href="/admin/settings.php" class="btn-secondary"><i class="fas fa-cog"></i> Paramètres</a>
-          <a href="/" target="_blank" class="btn-secondary"><i class="fas fa-external-link-alt"></i> Voir le site</a>
+          <a href="projects.php?action=add" class="btn-primary"><i class="fas fa-plus"></i> Nouveau projet</a>
+          <a href="team.php?action=add" class="btn-primary" style="background:var(--gold);"><i class="fas fa-user-plus"></i> Nouveau membre</a>
+          <a href="messages.php" class="btn-secondary"><i class="fas fa-envelope"></i> Voir les messages <?php if ($unreadMessages > 0): ?>(<?= $unreadMessages ?>)<?php endif; ?></a>
+          <a href="settings.php" class="btn-secondary"><i class="fas fa-cog"></i> Paramètres</a>
+          <a href="<?= BASE_PATH ?>/" target="_blank" class="btn-secondary"><i class="fas fa-external-link-alt"></i> Voir le site</a>
         </div>
       </div>
     </div>

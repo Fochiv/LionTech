@@ -3,12 +3,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/../../db.php';
+
 if (!isset($_SESSION['admin_id'])) {
-    header('Location: /admin/login.php');
+    header('Location: ' . BASE_PATH . '/admin/login.php');
     exit;
 }
-
-require_once __DIR__ . '/../../db.php';
 
 function getCurrentAdmin(): array {
     $db = getDB();

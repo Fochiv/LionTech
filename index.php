@@ -1,10 +1,6 @@
 <?php
 require_once __DIR__ . '/db.php';
 
-if (!file_exists(DB_PATH)) {
-    require_once __DIR__ . '/init-db.php';
-}
-
 $db = getDB();
 
 $projects = $db->query("SELECT * FROM projects ORDER BY created_at DESC")->fetchAll();
@@ -191,7 +187,7 @@ function getSetting(string $key, string $default = ''): string {
             <div class="project-label"><?= htmlspecialchars($project['category']) ?></div>
             <div class="project-thumb">
               <?php if (!empty($project['image']) && file_exists(__DIR__ . '/uploads/projects/' . $project['image'])): ?>
-                <img src="/uploads/projects/<?= htmlspecialchars($project['image']) ?>" alt="<?= htmlspecialchars($project['title']) ?>">
+                <img src="<?= BASE_PATH ?>/uploads/projects/<?= htmlspecialchars($project['image']) ?>" alt="<?= htmlspecialchars($project['title']) ?>">
               <?php else: ?>
                 <div class="project-placeholder"><i class="fas fa-laptop-code"></i></div>
               <?php endif; ?>
@@ -267,9 +263,9 @@ function getSetting(string $key, string $default = ''): string {
               $photoSrc = '';
               if (!empty($member['photo'])) {
                   if (file_exists(__DIR__ . '/' . $member['photo']))
-                      $photoSrc = '/' . htmlspecialchars($member['photo']);
+                      $photoSrc = BASE_PATH . '/' . htmlspecialchars($member['photo']);
                   elseif (file_exists(__DIR__ . '/uploads/team/' . $member['photo']))
-                      $photoSrc = '/uploads/team/' . htmlspecialchars($member['photo']);
+                      $photoSrc = BASE_PATH . '/uploads/team/' . htmlspecialchars($member['photo']);
               }
             ?>
             <?php if ($photoSrc): ?>

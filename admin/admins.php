@@ -82,7 +82,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH Admin — Administrateurs</title>
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -109,7 +109,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
         <div class="admin-card">
           <div class="admin-card-header">
             <h2><?= $action === 'add' ? 'Ajouter un administrateur' : 'Modifier l\'administrateur' ?></h2>
-            <a href="/admin/admins.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
+            <a href="admins.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
           </div>
           <div class="admin-card-body">
             <form method="POST">
@@ -134,7 +134,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
               </div>
               <div class="form-actions" style="margin-top:20px;">
                 <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Enregistrer</button>
-                <a href="/admin/admins.php" class="btn-secondary">Annuler</a>
+                <a href="admins.php" class="btn-secondary">Annuler</a>
               </div>
             </form>
           </div>
@@ -146,7 +146,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
             <h1>Administrateurs</h1>
             <p><?= count($admins) ?> admin(s) enregistré(s)</p>
           </div>
-          <a href="/admin/admins.php?action=add" class="btn-primary"><i class="fas fa-user-plus"></i> Ajouter un admin</a>
+          <a href="admins.php?action=add" class="btn-primary"><i class="fas fa-user-plus"></i> Ajouter un admin</a>
         </div>
 
         <div class="admin-card">
@@ -176,7 +176,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
                     <td style="color:var(--muted);font-size:12px;"><?= date('d/m/Y', strtotime($a['created_at'])) ?></td>
                     <td>
                       <div class="actions">
-                        <a href="/admin/admins.php?action=edit&id=<?= $a['id'] ?>" class="btn-action edit"><i class="fas fa-edit"></i> Modifier</a>
+                        <a href="admins.php?action=edit&id=<?= $a['id'] ?>" class="btn-action edit"><i class="fas fa-edit"></i> Modifier</a>
                         <?php if ($a['id'] !== $myId): ?>
                           <form method="POST" onsubmit="return confirm('Supprimer cet administrateur ?');" style="display:inline;">
                             <input type="hidden" name="action" value="delete">

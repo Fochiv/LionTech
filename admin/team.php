@@ -80,7 +80,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH Admin — Équipe</title>
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -107,7 +107,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
         <div class="admin-card">
           <div class="admin-card-header">
             <h2><?= $action === 'add' ? 'Ajouter un membre' : 'Modifier le membre' ?></h2>
-            <a href="/admin/team.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
+            <a href="team.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
           </div>
           <div class="admin-card-body">
             <form method="POST" enctype="multipart/form-data">
@@ -152,7 +152,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
               </div>
               <div class="form-actions" style="margin-top:20px;">
                 <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Enregistrer</button>
-                <a href="/admin/team.php" class="btn-secondary">Annuler</a>
+                <a href="team.php" class="btn-secondary">Annuler</a>
               </div>
             </form>
           </div>
@@ -164,7 +164,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
             <h1>Équipe LIONTECH</h1>
             <p><?= count($members) ?> membre(s)</p>
           </div>
-          <a href="/admin/team.php?action=add" class="btn-primary"><i class="fas fa-user-plus"></i> Nouveau membre</a>
+          <a href="team.php?action=add" class="btn-primary"><i class="fas fa-user-plus"></i> Nouveau membre</a>
         </div>
 
         <div class="admin-card">
@@ -223,7 +223,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
                       </td>
                       <td>
                         <div class="actions">
-                          <a href="/admin/team.php?action=edit&id=<?= $m['id'] ?>" class="btn-action edit"><i class="fas fa-edit"></i> Modifier</a>
+                          <a href="team.php?action=edit&id=<?= $m['id'] ?>" class="btn-action edit"><i class="fas fa-edit"></i> Modifier</a>
                           <form method="POST" onsubmit="return confirm('Supprimer ce membre ?');" style="display:inline;">
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?= $m['id'] ?>">

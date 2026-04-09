@@ -1,15 +1,11 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-if (isset($_SESSION['admin_id'])) {
-    header('Location: /admin/dashboard.php');
-    exit;
-}
-
 require_once __DIR__ . '/../db.php';
 
-if (!file_exists(DB_PATH)) {
-    require_once __DIR__ . '/../init-db.php';
+if (isset($_SESSION['admin_id'])) {
+    header('Location: ' . BASE_PATH . '/admin/dashboard.php');
+    exit;
 }
 
 $error = '';
@@ -27,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($admin && password_verify($password, $admin['password_hash'])) {
             $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['admin_name'] = $admin['full_name'] ?: $admin['username'];
-            $db->prepare("UPDATE admins SET last_login = CURRENT_TIMESTAMP WHERE id = ?")
+            $db->prepare("UPDATE admins SET last_login = NOW() WHERE id = ?")
                ->execute([$admin['id']]);
-            header('Location: /admin/dashboard.php');
+            header('Location: ' . BASE_PATH . '/admin/dashboard.php');
             exit;
         } else {
             $error = 'Identifiant ou mot de passe incorrect.';
@@ -45,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH — Connexion Admin</title>
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>

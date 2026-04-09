@@ -47,7 +47,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH Admin — Messages</title>
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -77,7 +77,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
         <div class="admin-card">
           <div class="admin-card-header">
             <h2><i class="fas fa-envelope-open" style="color:var(--accent);margin-right:8px;"></i> Message de <?= htmlspecialchars($viewMsg['name']) ?></h2>
-            <a href="/admin/messages.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
+            <a href="messages.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
           </div>
           <div class="admin-card-body">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
@@ -169,7 +169,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
                       <td><span class="badge-cat <?= $msg['is_read'] ? 'badge-read' : 'badge-unread' ?>"><?= $msg['is_read'] ? 'Lu' : 'Non lu' ?></span></td>
                       <td>
                         <div class="actions">
-                          <a href="/admin/messages.php?view=<?= $msg['id'] ?>" class="btn-action view"><i class="fas fa-eye"></i> Voir</a>
+                          <a href="messages.php?view=<?= $msg['id'] ?>" class="btn-action view"><i class="fas fa-eye"></i> Voir</a>
                           <form method="POST" style="display:inline;">
                             <input type="hidden" name="action" value="<?= $msg['is_read'] ? 'mark_unread' : 'mark_read' ?>">
                             <input type="hidden" name="id" value="<?= $msg['id'] ?>">

@@ -74,7 +74,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH Admin — Réalisations</title>
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -105,7 +105,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
         <div class="admin-card">
           <div class="admin-card-header">
             <h2><?= $action === 'add' ? 'Ajouter un projet' : 'Modifier le projet' ?></h2>
-            <a href="/admin/projects.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
+            <a href="projects.php" class="btn-secondary" style="padding:6px 14px;font-size:12px;"><i class="fas fa-arrow-left"></i> Retour</a>
           </div>
           <div class="admin-card-body">
             <form method="POST" enctype="multipart/form-data">
@@ -145,7 +145,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
               </div>
               <div class="form-actions" style="margin-top:20px;">
                 <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Enregistrer</button>
-                <a href="/admin/projects.php" class="btn-secondary">Annuler</a>
+                <a href="projects.php" class="btn-secondary">Annuler</a>
               </div>
             </form>
           </div>
@@ -158,7 +158,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
             <h1>Réalisations</h1>
             <p><?= count($projects) ?> projet(s) au total</p>
           </div>
-          <a href="/admin/projects.php?action=add" class="btn-primary"><i class="fas fa-plus"></i> Nouveau projet</a>
+          <a href="projects.php?action=add" class="btn-primary"><i class="fas fa-plus"></i> Nouveau projet</a>
         </div>
 
         <div class="admin-card">
@@ -176,13 +176,13 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
               </thead>
               <tbody>
                 <?php if (empty($projects)): ?>
-                  <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--muted);">Aucun projet. <a href="/admin/projects.php?action=add" style="color:var(--accent);">Ajouter le premier →</a></td></tr>
+                  <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--muted);">Aucun projet. <a href="projects.php?action=add" style="color:var(--accent);">Ajouter le premier →</a></td></tr>
                 <?php else: ?>
                   <?php foreach ($projects as $p): ?>
                     <tr>
                       <td>
                         <?php if ($p['image'] && file_exists(__DIR__ . '/../uploads/projects/' . $p['image'])): ?>
-                          <img src="/uploads/projects/<?= htmlspecialchars($p['image']) ?>" class="table-avatar" style="border-radius:6px;width:48px;height:36px;object-fit:cover;">
+                          <img src="<?= BASE_PATH ?>/uploads/projects/<?= htmlspecialchars($p['image']) ?>" class="table-avatar" style="border-radius:6px;width:48px;height:36px;object-fit:cover;">
                         <?php else: ?>
                           <div style="width:48px;height:36px;background:var(--bg);border:1px solid var(--border);border-radius:6px;display:grid;place-items:center;color:var(--muted);font-size:12px;"><i class="fas fa-image"></i></div>
                         <?php endif; ?>
@@ -193,7 +193,7 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
                       <td style="color:var(--muted);font-size:12px;"><?= date('d/m/Y', strtotime($p['created_at'])) ?></td>
                       <td>
                         <div class="actions">
-                          <a href="/admin/projects.php?action=edit&id=<?= $p['id'] ?>" class="btn-action edit"><i class="fas fa-edit"></i> Modifier</a>
+                          <a href="projects.php?action=edit&id=<?= $p['id'] ?>" class="btn-action edit"><i class="fas fa-edit"></i> Modifier</a>
                           <form method="POST" onsubmit="return confirm('Supprimer ce projet ?');" style="display:inline;">
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?= $p['id'] ?>">
