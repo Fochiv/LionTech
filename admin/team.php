@@ -21,13 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success = 'Statut du membre mis à jour.';
         $action = 'list';
     } elseif ($postAction === 'save') {
-        $name      = trim($_POST['name'] ?? '');
-        $roles     = trim($_POST['roles'] ?? '');
-        $portfolio = trim($_POST['portfolio_url'] ?? '');
-        $linkedin  = trim($_POST['linkedin'] ?? '');
-        $github    = trim($_POST['github'] ?? '');
-        $order     = (int)($_POST['order_num'] ?? 0);
-        $id        = (int)($_POST['id'] ?? 0);
+        $name        = trim($_POST['name'] ?? '');
+        $roles       = trim($_POST['roles'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+        $portfolio   = trim($_POST['portfolio_url'] ?? '');
+        $linkedin    = trim($_POST['linkedin'] ?? '');
+        $github      = trim($_POST['github'] ?? '');
+        $order       = (int)($_POST['order_num'] ?? 0);
+        $id          = (int)($_POST['id'] ?? 0);
 
         $photoFile = '';
         if (!empty($_FILES['photo']['name'])) {
@@ -43,16 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             if ($id > 0) {
                 if ($photoFile) {
-                    $db->prepare("UPDATE team_members SET name=?,roles=?,photo=?,portfolio_url=?,linkedin=?,github=?,order_num=? WHERE id=?")
-                       ->execute([$name,$roles,$photoFile,$portfolio,$linkedin,$github,$order,$id]);
+                    $db->prepare("UPDATE team_members SET name=?,roles=?,description=?,photo=?,portfolio_url=?,linkedin=?,github=?,order_num=? WHERE id=?")
+                       ->execute([$name,$roles,$description,$photoFile,$portfolio,$linkedin,$github,$order,$id]);
                 } else {
-                    $db->prepare("UPDATE team_members SET name=?,roles=?,portfolio_url=?,linkedin=?,github=?,order_num=? WHERE id=?")
-                       ->execute([$name,$roles,$portfolio,$linkedin,$github,$order,$id]);
+                    $db->prepare("UPDATE team_members SET name=?,roles=?,description=?,portfolio_url=?,linkedin=?,github=?,order_num=? WHERE id=?")
+                       ->execute([$name,$roles,$description,$portfolio,$linkedin,$github,$order,$id]);
                 }
                 $success = 'Membre mis à jour avec succès.';
             } else {
-                $db->prepare("INSERT INTO team_members (name,roles,photo,portfolio_url,linkedin,github,order_num) VALUES (?,?,?,?,?,?,?)")
-                   ->execute([$name,$roles,$photoFile,$portfolio,$linkedin,$github,$order]);
+                $db->prepare("INSERT INTO team_members (name,roles,description,photo,portfolio_url,linkedin,github,order_num) VALUES (?,?,?,?,?,?,?,?)")
+                   ->execute([$name,$roles,$description,$photoFile,$portfolio,$linkedin,$github,$order]);
                 $success = 'Membre ajouté avec succès.';
             }
             $action = 'list';
@@ -120,6 +121,10 @@ $initials = strtoupper(substr($currentAdmin['username'] ?? 'A', 0, 1));
                 <div class="form-group">
                   <label>Rôle(s) *</label>
                   <input type="text" name="roles" value="<?= htmlspecialchars($editMember['roles'] ?? '') ?>" placeholder="Développeur Fullstack, Designer..." required>
+                </div>
+                <div class="form-group full">
+                  <label>Description (biographie courte)</label>
+                  <textarea name="description" rows="4" placeholder="Décrivez le membre, son expertise, ses spécialités..."><?= htmlspecialchars($editMember['description'] ?? '') ?></textarea>
                 </div>
                 <div class="form-group">
                   <label>Lien Portfolio</label>

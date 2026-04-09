@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS team_members (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     roles TEXT NOT NULL,
+    description TEXT,
     photo TEXT,
     portfolio_url TEXT,
     linkedin TEXT,
@@ -66,11 +67,11 @@ if ($adminCount == 0) {
 $teamCount = $db->query("SELECT COUNT(*) FROM team_members")->fetchColumn();
 if ($teamCount == 0) {
     $members = [
-        ['Marthe Odonelle Njoya', 'Développeuse Fullstack', 'odonel.jpg', 'https://odonelle2001.github.io/MarthePotfolio/index.html', 'marthe-odonelle-njoya', 'Odonelle2001', 0],
-        ['Ben FOCH', 'Développeur Web', 'ben.jpeg', 'https://benfochportfolio.iceiy.com/index.php#hero', '', '', 1],
-        ['YONKOUE Njoya Emma', 'Designer Graphique & UI/UX', 'emma.jpeg', 'https://porte-folio-4-0.vercel.app/', '', '', 2],
+        ['Marthe Odonelle Njoya', 'Développeuse Fullstack', 'Développeuse Fullstack passionnée, Marthe maîtrise le développement front et back-end. Elle conçoit des applications web robustes, des interfaces soignées et des architectures solides. Disponible pour des missions en IT Support, Web Development, Front-end et UI/UX.', 'odonel.jpg', 'https://odonelle2001.github.io/MarthePotfolio/index.html', 'marthe-odonelle-njoya', 'Odonelle2001', 0],
+        ['Ben FOCH', 'Développeur Web', 'Développeur Web créatif et rigoureux, Ben transforme vos idées en sites web performants et modernes. Spécialiste du développement frontend et de l\'intégration, il assure des rendus visuellement impeccables sur tous les appareils.', 'ben.jpeg', 'https://benfochportfolio.iceiy.com/index.php#hero', '', '', 1],
+        ['YONKOUE Njoya Emma', 'Designer Graphique & UI/UX', 'Designer Graphique & UI/UX, Emma donne vie à l\'identité visuelle de vos projets. De la création de logo à la conception d\'interfaces utilisateur intuitives, elle conjugue esthétique et fonctionnalité pour des expériences mémorables.', 'emma.jpeg', 'https://porte-folio-4-0.vercel.app/', '', '', 2],
     ];
-    $stmt = $db->prepare("INSERT INTO team_members (name, roles, photo, portfolio_url, linkedin, github, order_num) VALUES (?,?,?,?,?,?,?)");
+    $stmt = $db->prepare("INSERT INTO team_members (name, roles, description, photo, portfolio_url, linkedin, github, order_num) VALUES (?,?,?,?,?,?,?,?)");
     foreach ($members as $m) {
         $stmt->execute($m);
     }

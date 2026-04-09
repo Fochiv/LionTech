@@ -261,28 +261,48 @@ function getSetting(string $key, string $default = ''): string {
     <div class="team-grid">
       <?php foreach ($team as $member): ?>
         <div class="team-card reveal">
+          <!-- Photo circulaire -->
           <div class="team-photo">
-            <?php if (!empty($member['photo']) && file_exists(__DIR__ . '/' . $member['photo'])): ?>
-              <img src="/<?= htmlspecialchars($member['photo']) ?>" alt="<?= htmlspecialchars($member['name']) ?>">
-            <?php elseif (!empty($member['photo']) && file_exists(__DIR__ . '/uploads/team/' . $member['photo'])): ?>
-              <img src="/uploads/team/<?= htmlspecialchars($member['photo']) ?>" alt="<?= htmlspecialchars($member['name']) ?>">
+            <?php
+              $photoSrc = '';
+              if (!empty($member['photo'])) {
+                  if (file_exists(__DIR__ . '/' . $member['photo']))
+                      $photoSrc = '/' . htmlspecialchars($member['photo']);
+                  elseif (file_exists(__DIR__ . '/uploads/team/' . $member['photo']))
+                      $photoSrc = '/uploads/team/' . htmlspecialchars($member['photo']);
+              }
+            ?>
+            <?php if ($photoSrc): ?>
+              <img src="<?= $photoSrc ?>" alt="<?= htmlspecialchars($member['name']) ?>">
             <?php else: ?>
               <div class="team-placeholder"><i class="fas fa-user"></i></div>
             <?php endif; ?>
           </div>
+
+          <!-- Infos -->
           <div class="team-info">
             <h3><?= htmlspecialchars($member['name']) ?></h3>
             <p class="team-role"><?= htmlspecialchars($member['roles']) ?></p>
-            <div class="team-links">
+            <?php if (!empty($member['description'])): ?>
+              <p class="team-desc"><?= htmlspecialchars($member['description']) ?></p>
+            <?php endif; ?>
+
+            <div class="team-footer">
               <?php if (!empty($member['portfolio_url'])): ?>
-                <a href="<?= htmlspecialchars($member['portfolio_url']) ?>" target="_blank" title="Portfolio"><i class="fas fa-globe"></i></a>
+                <a href="<?= htmlspecialchars($member['portfolio_url']) ?>" target="_blank" rel="noopener" class="btn-portfolio">
+                  <i class="fas fa-external-link-alt"></i>
+                  <span data-fr="Voir le portfolio" data-en="View portfolio">Voir le portfolio</span>
+                </a>
               <?php endif; ?>
-              <?php if (!empty($member['linkedin'])): ?>
-                <a href="https://linkedin.com/in/<?= htmlspecialchars($member['linkedin']) ?>" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <?php endif; ?>
-              <?php if (!empty($member['github'])): ?>
-                <a href="https://github.com/<?= htmlspecialchars($member['github']) ?>" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-              <?php endif; ?>
+
+              <div class="team-socials">
+                <?php if (!empty($member['linkedin'])): ?>
+                  <a href="https://linkedin.com/in/<?= htmlspecialchars($member['linkedin']) ?>" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <?php endif; ?>
+                <?php if (!empty($member['github'])): ?>
+                  <a href="https://github.com/<?= htmlspecialchars($member['github']) ?>" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <?php endif; ?>
+              </div>
             </div>
           </div>
         </div>
