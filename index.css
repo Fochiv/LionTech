@@ -68,6 +68,12 @@ a { text-decoration: none; color: inherit; }
   font-size: 10px; color: var(--gold);
 }
 
+.logo-img {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .logo-text { font-size: 14px; letter-spacing: 3px; font-weight: 600; }
 
 .nav-links { display: flex; gap: 28px; }

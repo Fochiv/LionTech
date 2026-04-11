@@ -1,0 +1,16 @@
+[Thu Apr  9 12:08:36 2026] PHP 8.2.23 Development Server (http://0.0.0.0:5000) started
+[Thu Apr  9 12:08:38 2026] 127.0.0.1:43936 Accepted
+[Thu Apr  9 12:08:38 2026] 127.0.0.1:43936 [200]: GET /
+[Thu Apr  9 12:08:38 2026] 127.0.0.1:43936 Closing
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43942 Accepted
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43942 [200]: GET /index.css
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43942 Closing
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43956 Accepted
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43956 [200]: GET /odonel.jpg
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43956 Closing
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43962 Accepted
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43962 [200]: GET /ben.jpeg
+[Thu Apr  9 12:08:40 2026] 127.0.0.1:43962 Closing
+[Thu Apr  9 12:08:41 2026] 127.0.0.1:43976 Accepted
+[Thu Apr  9 12:08:41 2026] 127.0.0.1:43976 [200]: GET /emma.jpeg
+[Thu Apr  9 12:08:41 2026] 127.0.0.1:43976 Closing

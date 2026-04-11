@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIONTECH — Connexion Admin</title>
+  <link rel="icon" href="../liontech-logo.jpg" type="image/jpeg">
   <link rel="stylesheet" href="admin.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -49,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="login-page">
   <div class="login-card">
     <div class="login-logo">
+      <img src="../liontech-logo.jpg" alt="LIONTECH Logo" class="login-logo-img">
       <div class="name">LIONTECH</div>
       <div class="sub">Espace Administrateur</div>
     </div>
