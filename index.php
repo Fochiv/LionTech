@@ -20,6 +20,7 @@ function getSetting(string $key, string $default = ''): string {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LIONTECH — Agence Web & Digitale</title>
+  <link rel="icon" href="liontech-logo.jpg" type="image/jpeg">
   <link rel="stylesheet" href="index.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +32,7 @@ function getSetting(string $key, string $default = ''): string {
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="logo-wrap">
-      <div class="logo-circle">LT</div>
+      <img src="liontech-logo.jpg" alt="LIONTECH Logo" class="logo-img">
       <div class="logo-text">LIONTECH</div>
     </div>
 
